@@ -16,35 +16,17 @@ class HomePage extends StatelessWidget {
       ),
       drawer: Drawer(),
       body: SafeArea(
-          child: Column(
-            children: [
-              ListTile(
-                leading: Icon(Icons.message),
-                title: Text('A beautyfull'),
-                subtitle: Text('Bangladesh'),
-                trailing: Icon(Icons.delete),
-                iconColor: Colors.pink,
-                textColor: Colors.deepPurple,
-              ),
-              ListTile(
-                leading: Icon(Icons.message),
-                title: Text('A beautyfull'),
-                subtitle: Text('Bangladesh'),
-                trailing: Icon(Icons.delete),
-                iconColor: Colors.pink,
-                textColor: Colors.deepPurple,
-              ),
-              ListTile(
-                leading: Icon(Icons.message),
-                title: Text('A beautyfull'),
-                subtitle: Text('Bangladesh'),
-                trailing: Icon(Icons.delete),
-                iconColor: Colors.pink,
-                textColor: Colors.deepPurple,
-              ),
-
-            ],
-          ),
+          child: Padding(
+            padding: EdgeInsets.all(10.0),
+            child: GridView.builder(
+              itemCount: 20,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,mainAxisSpacing: 10,crossAxisSpacing: 10,
+                ),
+                itemBuilder: (context, index){
+                  return Image.network('https://thumbs.dreamstime.com/z/battered-blooms-picture-was-taken-early-morning-first-i-hesitated-to-upload-one-due-to-some-91783357.jpg', fit: BoxFit.cover,);
+                }),
+          )
 
       ),
     );
