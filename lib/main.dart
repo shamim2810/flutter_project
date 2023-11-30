@@ -26,25 +26,40 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('MediaQuery'),
+        title: Text('Elevated Button'),
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
       
       body: SafeArea(
-          child: Container(
-            height: height,
-            width: width,
-            color: Colors.brown,
+          child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('Height :- $height', style: TextStyle(fontSize: width*0.05),),
-                Text('Width :- $width',style: TextStyle(fontSize: width*0.05),),
+                ElevatedButton(
+                    onPressed: (){},
+                    child: Text('Elevated Button'),
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      textStyle: TextStyle(fontSize: 15),
+                      onPrimary: Colors.red,
+                      elevation: 20,
+                      shadowColor: Colors.deepOrange,
+                      side: BorderSide(
+                        color: Colors.pink,
+                        width: 5,
+                      )
+                    ),
+                ),
+                SizedBox(height: 10,),
+                ElevatedButton.icon(
+                    onPressed: (){},
+                    icon: Icon(Icons.settings),
+                    label: Text('Setting'),
+                )
               ],
             ),
-          ),
+          )
       ),
     );
   }
