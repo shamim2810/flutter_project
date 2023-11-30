@@ -20,17 +20,30 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    var height = MediaQuery.of(context).size.height/3;
+    var width = MediaQuery.of(context).size.width/2;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('AspectRatio'),
+        title: Text('MediaQuery'),
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
       
       body: SafeArea(
-          child: AspectRatio(
-              aspectRatio: 3/2,
-            child: Image.network('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Altja_j%C3%B5gi_Lahemaal.jpg/1200px-Altja_j%C3%B5gi_Lahemaal.jpg'),
+          child: Container(
+            height: height,
+            width: width,
+            color: Colors.brown,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text('Height :- $height', style: TextStyle(fontSize: width*0.05),),
+                Text('Width :- $width',style: TextStyle(fontSize: width*0.05),),
+              ],
+            ),
           ),
       ),
     );
