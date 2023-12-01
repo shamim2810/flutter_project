@@ -21,45 +21,59 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    var height = MediaQuery.of(context).size.height/3;
-    var width = MediaQuery.of(context).size.width/2;
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('Elevated Button'),
+        title: Text('Layout Builder'),
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
       
       body: SafeArea(
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                    onPressed: (){},
-                    child: Text('Elevated Button'),
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      textStyle: TextStyle(fontSize: 15),
-                      onPrimary: Colors.red,
-                      elevation: 20,
-                      shadowColor: Colors.deepOrange,
-                      side: BorderSide(
-                        color: Colors.pink,
-                        width: 5,
-                      )
-                    ),
-                ),
-                SizedBox(height: 10,),
-                ElevatedButton.icon(
-                    onPressed: (){},
-                    icon: Icon(Icons.settings),
-                    label: Text('Setting'),
-                )
-              ],
+            child: LayoutBuilder(
+              builder: (context, contrain){
+                final width = contrain.maxWidth;
+                final height = contrain.maxHeight;
+                if(width < 600){
+                  return Column(
+                    children: [
+                      Text('Its a mobile device',
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.red,
+                      ),
+                      ),
+                      Text('width :- $width'),
+                    ],
+                  );
+                }else if(width < 900 && width > 600){
+                  return Column(
+                    children: [
+                      Text('Its a Tablet device',
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.deepPurple,
+                        ),
+                      ),
+                      Text('width :- $width')
+                    ],
+                  );
+                }else{
+                  return Column(
+                    children: [
+                      Text('Its a Desktop device',
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.pink,
+                        ),
+                      ),
+                      Text('width :- $width'),
+                    ],
+                  );
+                }
+              }
             ),
-          )
+          ),
       ),
     );
   }
