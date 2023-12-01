@@ -26,40 +26,26 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Elevated Button'),
+        title: Text('Fitted Box'),
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
       
       body: SafeArea(
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                    onPressed: (){},
-                    child: Text('Elevated Button'),
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      textStyle: TextStyle(fontSize: 15),
-                      onPrimary: Colors.red,
-                      elevation: 20,
-                      shadowColor: Colors.deepOrange,
-                      side: BorderSide(
-                        color: Colors.pink,
-                        width: 5,
-                      )
-                    ),
-                ),
-                SizedBox(height: 10,),
-                ElevatedButton.icon(
-                    onPressed: (){},
-                    icon: Icon(Icons.settings),
-                    label: Text('Setting'),
-                )
-              ],
+            child: Container(
+              padding: EdgeInsets.all(20),
+              height: 200,
+              width: 400,
+              color: Colors.pink,
+              child: FittedBox(
+                child: Text("Bangladesh is a Butiful Country",style: TextStyle(
+                  fontSize: 100,
+                  fontWeight: FontWeight.bold,
+                ),),
+              ),
             ),
-          )
+          ),
       ),
     );
   }
