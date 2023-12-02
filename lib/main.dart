@@ -28,60 +28,58 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _selectedIndex = 0;
 
-  final List<Widget> _views = <Widget>[
-    const Center(
-      child: Text('Home is selected',
-        style: TextStyle(
-          fontSize: 25,
-          color: Colors.deepOrange,
-        ),
-      ),
-    ),
-    const Center(
-      child: Text('Home is Chat',
-        style: TextStyle(
-          fontSize: 25,
-          color: Colors.blue,
-        ),
-      ),
-    ),
-    const Center(
-      child: Text('Home is Setting',
-        style: TextStyle(
-          fontSize: 25,
-          color: Colors.pinkAccent,
-        ),
-      ),
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bottom Navigation Bar'),
+        title: Text('Drawer'),
         centerTitle: true,
         backgroundColor: Colors.teal,
       ),
 
       body: SafeArea(
-          child: _views.elementAt(_selectedIndex),
+          child: Container(),
+
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(icon: Icon(Icons.home,color: Colors.deepOrangeAccent,),label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.chat,color: Colors.blue,),label: 'Chat'),
-            BottomNavigationBarItem(icon: Icon(Icons.settings,color: Colors.pink,),label: 'Setting'),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(child: Center(child: Text('This is a Drawer')),),
+            ListTile(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              title: Text("Home"),
+              subtitle: Text('Home page'),
+              trailing: Icon(Icons.arrow_forward),
+              leading: Icon(Icons.home),
+            ),
+            ListTile(
+              onTap: (){},
+              title: Text("Setting"),
+              subtitle: Text('Setting all'),
+              trailing: Icon(Icons.arrow_forward),
+              leading: Icon(Icons.settings),
+            ),
+            ListTile(
+              onTap: (){},
+              title: Text("Notification"),
+              subtitle: Text('Notification menu'),
+              trailing: Icon(Icons.arrow_forward),
+              leading: Icon(Icons.notifications),
+            ),
+            ListTile(
+              onTap: (){},
+              title: Text("Display"),
+              subtitle: Text('Display details'),
+              trailing: Icon(Icons.arrow_forward),
+              leading: Icon(Icons.display_settings),
+            ),
           ],
-        currentIndex: _selectedIndex,
-        onTap: (index){
-            setState(() {
-              _selectedIndex = index;
-            });
-        },
+        ),
       ),
+
     );
   }
 }
