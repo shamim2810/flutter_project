@@ -15,6 +15,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: HomePage(),
     );
   }
@@ -32,54 +33,46 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Drawer'),
-        centerTitle: true,
-        backgroundColor: Colors.teal,
-      ),
-
       body: SafeArea(
-          child: Container(),
+          child: CustomScrollView(
+            slivers: <Widget>[
+              SliverAppBar(
+                backgroundColor: Colors.grey,
+                pinned: true,
+                floating: true,
+                snap: true,
+                expandedHeight: 250,
+                flexibleSpace: FlexibleSpaceBar(
+                  title: Text('Flutter'),
+                  centerTitle: true,
+                  background: Image.network('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e0ab53af-37d7-44ff-846f-868de437ef1d/dg7v2gi-dad01cb0-8e3d-43a8-9d22-c3fe657376d3.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2UwYWI1M2FmLTM3ZDctNDRmZi04NDZmLTg2OGRlNDM3ZWYxZFwvZGc3djJnaS1kYWQwMWNiMC04ZTNkLTQzYTgtOWQyMi1jM2ZlNjU3Mzc2ZDMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.EeK_Q-K1UDw9E4-37Hm8TlHlnxKJZU-STZUZ0eZNsBM',
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                leading: IconButton(
+                    onPressed: (){},
+                    icon: Icon(Icons.menu,color: Colors.white,),),
+                actions: [
+                  IconButton(onPressed: (){}, icon: Icon(Icons.settings,color: Colors.white,),),
+                  IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward,color: Colors.white,),),
+                ],
+              ),
 
+              SliverList(
+                  delegate: SliverChildBuilderDelegate((context, index){
+                    return ListTile(
+                      leading: Text('$index'),
+                      trailing: Icon(Icons.arrow_forward),
+                      title: Text('Capital city of Dhaka'),
+                      subtitle: Text('Bangladesh'),
+                    );
+                  },
+                      childCount: 50,
+                  ),
+              ),
+            ],
+          ),
       ),
-      drawer: Drawer(
-        child: ListView(
-          children: [
-            DrawerHeader(child: Center(child: Text('This is a Drawer')),),
-            ListTile(
-              onTap: (){
-                Navigator.pop(context);
-              },
-              title: Text("Home"),
-              subtitle: Text('Home page'),
-              trailing: Icon(Icons.arrow_forward),
-              leading: Icon(Icons.home),
-            ),
-            ListTile(
-              onTap: (){},
-              title: Text("Setting"),
-              subtitle: Text('Setting all'),
-              trailing: Icon(Icons.arrow_forward),
-              leading: Icon(Icons.settings),
-            ),
-            ListTile(
-              onTap: (){},
-              title: Text("Notification"),
-              subtitle: Text('Notification menu'),
-              trailing: Icon(Icons.arrow_forward),
-              leading: Icon(Icons.notifications),
-            ),
-            ListTile(
-              onTap: (){},
-              title: Text("Display"),
-              subtitle: Text('Display details'),
-              trailing: Icon(Icons.arrow_forward),
-              leading: Icon(Icons.display_settings),
-            ),
-          ],
-        ),
-      ),
-
     );
   }
 }
