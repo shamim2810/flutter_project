@@ -29,51 +29,29 @@ class HomePage extends StatelessWidget {
       ),
       
       body: SafeArea(
-          child: Center(
-            child: LayoutBuilder(
-              builder: (context, contrain){
-                final width = contrain.maxWidth;
-                final height = contrain.maxHeight;
-                if(width < 600){
-                  return Column(
-                    children: [
-                      Text('Its a mobile device',
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.red,
-                      ),
-                      ),
-                      Text('width :- $width'),
-                    ],
-                  );
-                }else if(width < 900 && width > 600){
-                  return Column(
-                    children: [
-                      Text('Its a Tablet device',
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.deepPurple,
-                        ),
-                      ),
-                      Text('width :- $width')
-                    ],
-                  );
-                }else{
-                  return Column(
-                    children: [
-                      Text('Its a Desktop device',
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.pink,
-                        ),
-                      ),
-                      Text('width :- $width'),
-                    ],
-                  );
-                }
-              }
+          child: Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: RichText(
+                text: TextSpan(
+                  text: 'Do you have account?',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: 'Sign In!',
+                      style: TextStyle(
+                        color: Colors.pink,
+                        fontSize: 25,
+                        fontStyle: FontStyle.italic,
+                      )
+                    )
+                  ]
+                ),
+
             ),
-          ),
+          )
       ),
     );
   }
