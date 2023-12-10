@@ -41,12 +41,13 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
           child: Center()
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Colors.teal,
           onPressed: (){
 
           },
-          child: Icon(Icons.add,color: Colors.white,),
+          label: Text('Add',style: TextStyle(color: Colors.white),),
+          icon: Icon(Icons.add,color: Colors.white,),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
