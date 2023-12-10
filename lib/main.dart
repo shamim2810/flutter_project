@@ -34,51 +34,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Drop Down Button'),
+      appBar: AppBar(title: Text('Floating Action Button'),
         backgroundColor: Colors.teal,
         centerTitle: true,
       ),
       body: SafeArea(
-          child: Center(
-            child: DropdownButton(
-              value: dropDownValue,
-              hint: Text('Select the City..',
-                style: TextStyle(fontSize: 20, color: Colors.black),
-              ),
-                style: TextStyle(fontSize: 20, color: Colors.black),
-                icon: Icon(Icons.keyboard_arrow_down),
-                dropdownColor: Colors.orange,
-                isExpanded: true,
-                items: [
-                  DropdownMenuItem(
-                      child: Text('Dhaka'),
-                    value: 'Dhaka',
-                  ),
-                  DropdownMenuItem(
-                    child: Text('Comilla'),
-                    value: 'Comilla',
-                  ),
-                  DropdownMenuItem(
-                    child: Text('Barishal'),
-                    value: 'Barishal',
-                  ),
-                  DropdownMenuItem(
-                    child: Text('Khulna'),
-                    value: 'Khulna',
-                  ),
-                  DropdownMenuItem(
-                    child: Text('Rajshahi'),
-                    value: 'Rajshahi',
-                  ),
-                ],
-                onChanged: (String? value){
-                  setState(() {
-                    dropDownValue = value;
-                  });
-                }
-            ),
-          ) 
+          child: Center()
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.teal,
+          onPressed: (){
+
+          },
+          child: Icon(Icons.add,color: Colors.white,),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
